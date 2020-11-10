@@ -18,8 +18,8 @@ const ERROR_VARIANT = 'error';
 export default class BoatSearchResults extends LightningElement {
     @track selectedBoatId;
     columns = [
-        { label: 'Name', fieldName: 'name', editable: 'true' },
-        { label: 'Length', fieldName: 'length__c', type: 'number', editable: 'true' },
+        { label: 'Name', fieldName: 'Name', editable: 'true' },
+        { label: 'Length', fieldName: 'Length__c', type: 'number', editable: 'true' },
         { label: 'Price', fieldName: 'Price__c', type: 'currency', editable: 'true' },
         { label: 'Description', fieldName: 'Description__c', editable: 'true' }        
     ];
@@ -74,7 +74,7 @@ export default class BoatSearchResults extends LightningElement {
     @api
     async refresh() { 
         this.notifyLoading(true);
-        refreshApex({ data: this.boats });
+        refreshApex(this.boats);
     }
     
     // this function must update selectedBoatId and call sendMessageService
@@ -99,7 +99,7 @@ export default class BoatSearchResults extends LightningElement {
     // clear lightning-datatable draft values
     handleSave(event) {
         // notify loading
-        notifyLoading(true);
+        this.notifyLoading(true);
 
         const updatedFields = event.detail.draftValues;
         // Update the records via Apex
@@ -122,7 +122,7 @@ export default class BoatSearchResults extends LightningElement {
             this.dispatchEvent(event);            
         })
         .finally(() => {
-            notifyLoading(false);
+            this.notifyLoading(false);
         });
     }
     // Check the current value of isLoading before dispatching the doneloading or loading custom event

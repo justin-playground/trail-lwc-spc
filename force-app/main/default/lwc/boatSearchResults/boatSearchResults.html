@@ -21,7 +21,7 @@
         <lightning-tab label="Boat Editor">
             <template if:true={boats.data}>
                 <div class="slds-scrollable_y">
-                    <lightning-datatable key-field="id" data={boats.data} columns={columns} onsave={handleSave} hide-checkbox-column></lightning-datatable>
+                    <lightning-datatable key-field="Id" data={boats.data} columns={columns} onsave={handleSave} hide-checkbox-column></lightning-datatable>
                 </div>
             </template>
         </lightning-tab>

@@ -18,7 +18,7 @@ export default class BoatTile extends LightningElement {
         const TILE_WRAPPER_SELECTED_CLASS = 'tile-wrapper selected';
         const TILE_WRAPPER_UNSELECTED_CLASS = 'tile-wrapper';
 
-        if (this.selectedBoatId != null)
+        if (this.selectedBoatId === this.boat.Id)
             return TILE_WRAPPER_SELECTED_CLASS;
         else
             return TILE_WRAPPER_UNSELECTED_CLASS;
